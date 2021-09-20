@@ -25,12 +25,13 @@
         <div class="login">
             <section class="login__container">
                 <h2>Inicia sesión</h2>
-                <form class="login__container--form">
-                    <input class="input" type="text" placeholder="Usuario">
-                    <input class="input" type="password" placeholder="Contraseña">
+                <form class="login__container--form" action="vista-principal/comprobarUsuario.jsp" method="Post">
+                    <input class="input" type="text" placeholder="Usuario" name="usuario">
+                    <input class="input" type="password" placeholder="Contraseña" name="contrasena">
                     <section class="main-buttons">
                         <a href=""></a>
-                        <a href="vista-principal/main.html" class="button">Ingresar</a>
+                        <!-- <a href="vista-principal/main.jsp" action="vista-principal/main.jsp" class="button">Ingresar</a>-->
+                        <input type="submit" value="Ingresar" class="button">
                         <button class="button">Cancelar</button>
                     </section>
                     <div class="login__container--remember-me">
