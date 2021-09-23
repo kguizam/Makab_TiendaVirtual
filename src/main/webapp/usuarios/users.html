@@ -32,27 +32,29 @@
         <div class="ucp">
             <section class="ucp__container">
                 <h2>Usuarios</h2>
-                <div>
-                    <input class="input" type="number" placeholder="Cédula">
-                </div>
-                <div>
-                    <input class="input" type="text" placeholder="Nombre Completo">
-                </div>
-                <div>
-                    <input class="input" type="email" placeholder="Correo Electrónico">
-                </div>
-                <div>
-                    <input class="input" type="text" placeholder="Usuario">
-                </div>
-                <div>
-                    <input class="input" type="password" placeholder="Contraseña">
-                </div>
-                <section class="ucp__button--container">
-                <button class="ucp__button">Consultar</button>
-                <button class="ucp__button">Crear</button>
-                <button class="ucp__button">Actualizar</button>
-                <button class="ucp__button">Borrar</button>
-                </section>
+                <form method="post" action="realizarPeticion.jsp">
+	                <div>
+	                    <input class="input" type="number" placeholder="Cédula" name="cedula">
+	                </div>
+	                <div>
+	                    <input class="input" type="text" placeholder="Nombre Completo" name="nombre">
+	                </div>
+	                <div>
+	                    <input class="input" type="email" placeholder="Correo Electrónico" name="correo">
+	                </div>
+	                <div>
+	                    <input class="input" type="text" placeholder="Usuario" name="usuario">
+	                </div>
+	                <div>
+	                    <input class="input" type="password" placeholder="Contraseña" name="contrasena">
+	                </div>
+	                <section class="ucp__button--container">
+	                <input type="submit" class="ucp__button" name="submit" value="consultar">
+	                <input type="submit" class="ucp__button" name="submit" value="crear">
+	                <input type="submit" class="ucp__button" name="submit" value="actualizar">
+	                <input type="submit" class="ucp__button" name="submit" value="borrar">
+	                </section>
+                </form>
             </section>
         </div>
     </main>

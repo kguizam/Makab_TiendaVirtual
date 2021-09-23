@@ -7,8 +7,8 @@
 <!DOCTYPE html>
 <html>
 <%
-	// ClienteController cc=new ClienteController();
-	ClienteVO cli=new ClienteVO();
+// ClienteController cc=new ClienteController();
+	Usuario cli=new Usuario();
 	int id=Integer.parseInt(request.getParameter("idcliente"));
 	cli.setIdCliente(id);
 	cli.setNombreCliente(request.getParameter("nombre"));
