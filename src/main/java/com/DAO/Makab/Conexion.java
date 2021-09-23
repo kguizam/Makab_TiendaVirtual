@@ -21,16 +21,16 @@ public class Conexion {
          //obtenemos la conexión
          connection = DriverManager.getConnection(url,login,password);
 
-         if (connection!=null){
-            System.out.println("Conexión a base de datos "+bd+" OK\n");
+         if (connection != null){
+            System.out.println("La conexión a base de datos " + bd + " ha sido un éxito!");
          }
       }
       catch(SQLException e){
-         System.out.println(e);
+         System.out.println("EXCEPCIÓN SQL!!! : " + e);
       }catch(ClassNotFoundException e){
-         System.out.println(e);
+         System.out.println("CLASS NOT FOUND!!! :" + e);
       }catch(Exception e){
-         System.out.println(e);
+         System.out.println("EXCEPCIÓN GENÉRICA!!!" + e);
       }
    }
    /**Permite retornar la conexión*/

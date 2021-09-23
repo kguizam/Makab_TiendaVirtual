@@ -1,6 +1,7 @@
-//git
 package com.DTO.Makab;
-
+/**
+ * Objeto para transpasar los datos entre métodos
+ */
 public class Usuario {
 	 private int id;
 	 private long cedula;
