@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8" 
     import="com.DAO.Makab.DataAcessObject,
-    		com.DTO.Makab.Usuario,
-    		com.BO.Makab.Peticiones" %>
+    		com.DTO.Makab.Usuario,com.BO.Makab.Peticion" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +33,7 @@
 		<%
 		if (DataAcessObject.esUsuarioAutorizado(request.getParameter("usuario"), request.getParameter("contrasena"))) {
 				out.print("BIEN HECHO!");
-				Peticiones.insertarDatos();
+				Peticion.insertarDatos();
 			}
 		%>
     </body>

@@ -74,4 +74,11 @@ public class Usuario {
 		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", correo=" + correo + ", usuario="
 				+ usuario + ", contrasena=" + contrasena + "]";
 	}
+	
+	public String[] getArrayDatos() {
+		String[] miArray = {
+				cedula + "", nombre, correo, usuario, contrasena
+		};
+		return miArray;
+	}
 }

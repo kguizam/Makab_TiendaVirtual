@@ -2,7 +2,7 @@ package com.DAO.Makab;
 import java.sql.*;
 import com.DTO.Makab.*;
 //import java.util.ArrayList;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  * Clase que permite el acceso a la base de datos
@@ -131,6 +131,7 @@ public class DataAcessObject {
 	  	}
 		return estaAutorizado;
 	}
+	
 	/**
 	 * Inserta los datos de un nuevo usuario
 	 * @param usuario Objeto Usuario con los datos a ingresar
@@ -168,12 +169,13 @@ public class DataAcessObject {
 	        conex.desconectar();
 	        
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error\n"+e);
+			//JOptionPane.showMessageDialog(null, "Error\n"+e);
 			infoInsertadaCorrectamente = false;
 	  	}
 		
 		return infoInsertadaCorrectamente;
 	}
+	
 	/**
 	 * Consulta por la existencia de un usuario, retornando su ID
 	 * @param cedula
@@ -201,6 +203,7 @@ public class DataAcessObject {
 	  	}
 		return id;
 	}
+	
 	/**
 	 * Elimina al usuario dado
 	 * @param cedula
@@ -227,6 +230,7 @@ public class DataAcessObject {
 		}
 		return usuarioEliminado;
 	}
+	
 	/** 
 	 * Reemplaza los datos del usuario
 	 * @param cedula
@@ -241,14 +245,11 @@ public class DataAcessObject {
 		if (id != 0) {
 			try {
 				PreparedStatement request = conex.getConnection().prepareStatement("UPDATE usuarios SET NOMBRE = ?, CORREO = ?, USUARIO = ?, CONTRASENIA = ? WHERE ID = ?");
-				// 4 espacios; suposición de que todos los datos son nuevos
-				for (int i = 1; i < 4; i++) {
-					if (datosUsuario[i] != null) request.setString(i, datosUsuario[i]);
-				}
+				for (int i = 1; i < 5; i++) request.setString(i, datosUsuario[i]);
 				request.setInt(5, id);
 				
 				request.executeUpdate();
-				JOptionPane.showMessageDialog(null, "Usuario modificado con la siguiente información:\n" + consultarUsuario(cedula).toString());
+				//JOptionPane.showMessageDialog(null, "Usuario modificado con la siguiente información:\n" + consultarUsuario(cedula).toString());
 				usuarioActualizado = true;
 				
 				request.close();
@@ -260,8 +261,9 @@ public class DataAcessObject {
 		}
 		return usuarioActualizado;
 	}
+	
 	/**
-	 * Recupera los datos del usuario 
+	 * Recupera los datos del usuario mediante un objeto usuario 
 	 * @param cedula
 	 * @return Objeto Usuario con los datos requeridos, null si no existe el usuario 
 	 */
