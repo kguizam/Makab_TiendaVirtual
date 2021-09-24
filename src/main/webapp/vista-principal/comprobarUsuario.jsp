@@ -33,7 +33,6 @@
 		<%
 		if (DataAcessObject.esUsuarioAutorizado(request.getParameter("usuario"), request.getParameter("contrasena"))) {
 				out.print("BIEN HECHO!");
-				Peticion.insertarDatos();
 			}
 		%>
     </body>

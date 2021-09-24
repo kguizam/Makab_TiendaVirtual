@@ -10,9 +10,9 @@
 // ClienteController cc=new ClienteController();
 	Usuario cli=new Usuario();
 	int id=Integer.parseInt(request.getParameter("idcliente"));
-	cli.setIdCliente(id);
-	cli.setNombreCliente(request.getParameter("nombre"));
-	cli.setApellidoCliente(request.getParameter("apellido"));
+	//cli.setIdCliente(id);
+	//cli.setNombreCliente(request.getParameter("nombre"));
+	//cli.setApellidoCliente(request.getParameter("apellido"));
 
 	//cc.registrarCliente(cli);
 %>
