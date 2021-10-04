@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="utf-8" 
     import="com.DAO.Makab.DataAcessObject,
-    		com.DTO.Makab.Usuario,com.BO.Makab.Peticion" %>
+    		com.DTO.Makab.Usuario,
+    		com.BO.Makab.Peticion" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +39,7 @@
         <%
 		if (DataAcessObject.esUsuarioAutorizado(request.getParameter("usuario"), request.getParameter("contrasena"))) {
 				response.sendRedirect("../vista-principal/main.html");
-			}
+			} 
 		%>
     </main>
 </body>

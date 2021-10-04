@@ -32,26 +32,32 @@
         <div class="ucp">
             <section class="ucp__container">
                 <h2>Proveedores</h2>
+                
+                <form method="post" action="realizarPeticion.jsp">
+                
                 <div>
-                    <input class="input" type="number" placeholder="NIT">
+                    <input class="input" type="number" placeholder="NIT" name="cedula">
                 </div>
                 <div>
-                    <input class="input" type="text" placeholder="Nombre Proveedor">
+                    <input class="input" type="text" placeholder="Nombre Proveedor" name="nombre">
                 </div>
                 <div>
-                    <input class="input" type="text" placeholder="Dirección">
+                    <input class="input" type="text" placeholder="Dirección" name="correo">
                 </div>
                 <div>
-                    <input class="input" type="number" placeholder="Teléfono">
+                    <input class="input" type="number" placeholder="Teléfono" name="usuario">
                 </div>
                 <div>
-                    <input class="input" type="text" placeholder="Ciudad">
+                    <input class="input" type="text" placeholder="Ciudad" name="contrasena">
                 </div>
                 <section class="ucp__button--container">
-                <button class="ucp__button">Consultar</button>
-                <button class="ucp__button">Crear</button>
-                <button class="ucp__button">Actualizar</button>
-                <button class="ucp__button">Borrar</button>
+                	<input type="submit" class="ucp__button" name="submit" value="consultar">
+	                <input type="submit" class="ucp__button" name="submit" value="crear">
+	                <input type="submit" class="ucp__button" name="submit" value="actualizar">
+	                <input type="submit" class="ucp__button" name="submit" value="borrar">
+                
+                </form>
+                
                 </section>
             </section>
         </div>

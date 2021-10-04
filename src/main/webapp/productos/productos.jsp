@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="utf-8" import="com.BO.Makab.Peticion" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,9 +34,10 @@
         <div class="ucp">
             <section class="ucp__container">
                 <h2>Productos</h2>
+                <!-- CUERPO DEL FORMULARIO -->                
                 <form action="productos.jsp" method="post">
 	                <div>
-	                    <input class="input-product" type="text" placeholder="Nombre del archivo" value="Productos.csv" name="archivo">
+	                    <input class="input-product" type="text" placeholder="Nombre del archivo" value="<%= request.getParameter("archivo") %>" name="archivo">
 	                </div>
 	                <section class="ucp__button--product">
 	                <input type="file" accept=".csv" id="button" style="display: none">
@@ -45,8 +48,11 @@
 	                </section>
                 </form>
             </section>
+            
         </div>
     </main>
 </body>
-
+<script>
+    alert(<%= '"' + Peticion.insertarCSV(request.getParameter("archivo")) + '"'%>  );
+</script>
 </html>

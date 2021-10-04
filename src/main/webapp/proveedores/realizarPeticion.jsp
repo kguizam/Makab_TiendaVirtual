@@ -43,7 +43,7 @@
 	<p><% 
 	// 2. Organización e impresión
 		String[] nombresFormulario = {
-			"Cédula", "Nombre", "Correo", "Usuario", "Contraseña"	
+			"Cédula", "Nombre", "Dirección", "Teléfono", "Ciudad"
 		};
 		String[] formulario = {
 			stringCedula, nombre, correo, usuario, contrasena
@@ -59,7 +59,7 @@
 	if (Peticion.esPosibleLaConsulta(opcion, formulario)){
 		out.print("<p style='color: green'> * La Consulta es posible! :D </p>");
 		out.print("<p style='color: red'> * (si 'RESULTADO: null', la petición fue infructuosa):</p><br>");
-		out.print("<p> RESULTADO: " + Peticion.intentar(1, opcion, formulario) + "</p>");
+		out.print("<p> RESULTADO: " + Peticion.intentar(3, opcion, formulario) + "</p>");
 	} else {
 		out.print("<p style='color: red'> La Consulta es imposible [Insuficiencia de datos]</p>");
 	}
