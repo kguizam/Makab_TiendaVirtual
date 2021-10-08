@@ -2,84 +2,54 @@ package com.DTO.Makab;
 /**
  * Objeto para transpasar los datos entre métodos
  */
-public class Cliente {
-	 private int id;
-	 private long cedula;
-	 private String nombre;
-	 private String correo;
-	 private String usuario;
-	 private String contrasena;
+public class Cliente extends Persona{
+	private String direccion;
+	private String telefono;
+	private String correo;
 	 
-	 public Cliente() {
-	 }
+	public Cliente() {
+	}
 	 
-	public Cliente(int id, long cedula,String nombre, String correo, String usuario, String contrasena) {
-		this.id = id;
-		this.cedula = cedula;
-		this.nombre = nombre;
+	public Cliente(int id, long cedula, String nombre, String direccion, String telefono, String correo) {
+		super(id, cedula, nombre);
+		this.direccion = direccion;
+		this.telefono = telefono;
 		this.correo = correo;
-		this.usuario = usuario;
-		this.contrasena = contrasena;
 	}
 
-	public int getId() {
-		return id;
+	public String getCampo1() {
+		return direccion;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public long getCedula() {
-		return cedula;
+	public void setCampo1(String direccion) {
+		this.direccion = direccion;
 	}
 
-	public void setCedula(long cedula) {
-		this.cedula = cedula;
+	public String getCampo2() {
+		return telefono;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public void setCampo2(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getCorreo() {
+	public String getCampo3() {
 		return correo;
 	}
 
-	public void setCorreo(String correo) {
+	public void setCampo3(String correo) {
 		this.correo = correo;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getContrasena() {
-		return contrasena;
-	}
-
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
-	}
-
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", dirección=" + correo + ", teléfono="
-				+ usuario + ", correo=" + contrasena + "]";
+	protected String[] getNombresCampos() {
+		return new String[] {
+			"Cédula", "Nombre", "Dirección", "Teléfono", "Correo"
+		};
 	}
 	
-	public String[] getArrayDatos() {
-		String[] miArray = {
-				cedula + "", nombre, correo, usuario, contrasena
+	public String[] getArrayCampos() {
+		return new String[] {
+			identificador + "", nombre, direccion, telefono, correo
 		};
-		return miArray;
 	}
 }

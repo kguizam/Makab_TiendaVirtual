@@ -2,10 +2,7 @@ package com.DTO.Makab;
 /**
  * Objeto para transpasar los datos entre métodos
  */
-public class Usuario {
-	 private int id;
-	 private long cedula;
-	 private String nombre;
+public class Usuario extends Persona {
 	 private String correo;
 	 private String usuario;
 	 private String contrasena;
@@ -14,72 +11,45 @@ public class Usuario {
 	 }
 	 
 	public Usuario(int id, long cedula,String nombre, String correo, String usuario, String contrasena) {
-		this.id = id;
-		this.cedula = cedula;
-		this.nombre = nombre;
+		super(id, cedula, nombre);
 		this.correo = correo;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 	
-	public long getCedula() {
-		return cedula;
-	}
-
-	public void setCedula(long cedula) {
-		this.cedula = cedula;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getCorreo() {
+	public String getCampo1() {
 		return correo;
 	}
 
-	public void setCorreo(String correo) {
+	public void setCampo1(String correo) {
 		this.correo = correo;
 	}
 
-	public String getUsuario() {
+	public String getCampo2() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setCampo2(String usuario) {
 		this.usuario = usuario;
 	}
 
-	public String getContrasena() {
+	public String getCampo3() {
 		return contrasena;
 	}
 
-	public void setContrasena(String contrasena) {
+	public void setCampo3(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", cedula=" + cedula + ", nombre=" + nombre + ", correo=" + correo + ", usuario="
-				+ usuario + ", contrasena=" + contrasena + "]";
+	protected String[] getNombresCampos() {
+		return new String[] {
+			"NIT", "Nombre", "Correo", "Usuario", "Contraseña"
+		};
 	}
 	
-	public String[] getArrayDatos() {
-		String[] miArray = {
-				cedula + "", nombre, correo, usuario, contrasena
+	public String[] getArrayCampos() {
+		return new String[] {
+			identificador + "", nombre, correo, usuario, contrasena
 		};
-		return miArray;
 	}
 }

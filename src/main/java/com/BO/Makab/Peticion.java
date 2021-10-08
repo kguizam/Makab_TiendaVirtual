@@ -83,7 +83,7 @@ public class Peticion {
 					
 					resultadoPeticion = DAO.insertar(newUser);
 					if (resultadoPeticion) {
-						respuesta = "Usuario " + newUser.getUsuario() + " creado exitosamente";
+						respuesta = "Usuario " + newUser.getCampo2() + " creado exitosamente";
 					} break;
 				case 2:
 					Cliente newClient = new Cliente(
@@ -112,7 +112,7 @@ public class Peticion {
 					Usuario dbUser = DAO.consultarUsuario(cedula);
 					
 					if (dbUser != null) {
-						String[] datosAntiguos = dbUser.getArrayDatos();
+						String[] datosAntiguos = dbUser.getArrayCampos();
 						
 						for (int i = 1; i < 5; i++) {
 							if (datosFormulario[i] == "") datosFormulario[i] = datosAntiguos[i];
@@ -128,7 +128,7 @@ public class Peticion {
 					Cliente dbClient = DAO.consultarCliente(cedula);
 					
 					if (dbClient != null) {
-						String[] datosAntiguos = dbClient.getArrayDatos();
+						String[] datosAntiguos = dbClient.getArrayCampos();
 						
 						for (int i = 1; i < 5; i++) {
 							if (datosFormulario[i] == "") datosFormulario[i] = datosAntiguos[i];
@@ -144,7 +144,7 @@ public class Peticion {
 					Proveedor dbProveedor = DAO.consultarProveedor(cedula);
 					
 					if (dbProveedor != null) {
-						String[] datosAntiguos = dbProveedor.getArrayDatos();
+						String[] datosAntiguos = dbProveedor.getArrayCampos();
 						
 						for (int i = 1; i < 5; i++) {
 							if (datosFormulario[i] == "") datosFormulario[i] = datosAntiguos[i];

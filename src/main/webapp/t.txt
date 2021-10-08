@@ -1,0 +1,54 @@
+You have to define the goal of your app, 
+you must read python's documentation , 
+you should understand the pros and cons of python, 
+you may use python if it fits your needs, 
+you could use other languages at the sime time to improve your app
+You should define your variables first, 
+You must/could assign a data type to each variable
+You may use the "input" function to capture data
+you must use the "print" function to show results
+You must take into account that python is case-sensitive
+You should respect the pre-established rules of syntax
+You should make the code readable and as efficient as possible. 
+You may have errors in the code, but you should be patient and debug everything in the shortest possible time. 
+You have to start a variable's name with a lowercase letter
+you should understand the pros and cons of python,
+You should define your variables first,
+You should assign a data type to each variable 
+You should respect the pre-established rules of syntax 
+You should make the code readable and as efficient as possible
+you must read python's documentation,
+you must use the "print" function to show results,
+You must take into account that python is case-sensitive
+you may use python if it fits your needs,
+You may use the "input" function to capture data,
+You may have errors in the code
+You have to define the goal of your app, 
+you Have to be patient and debug everything in the shortest possible time.
+You could use other languages at the same time to improve your app,
+You have to indent properly when using if-else
+You have to define the goal of your app, 
+you Have to be patient 
+You have to debug everything in the shortest possible time.
+You have to indent properly when using if-else
+You have to use python libraries when possible.
+You could use other languages at the same time to improve your app.
+You could create your own functions.
+You could use Anaconda or Google colab to write your  python code.
+You could use Tuples instead of list depending on the use.
+You could use loops to optimize your code.
+you must read python's documentation.
+you must use the "print" function to show results.
+You must take into account that python is case-sensitive.
+You must be organized with your code.
+You must keep your code simple to understand.
+You may thus comment on your code so that it is easy to understand what is happening.
+
+Before starting, you must take into account the following rules:
+    - Python is case-sensitive, which means, for example, Name and name have different meanings.
+    - The standard is to use English names in programming.
+    - All variables should start with a lowercase letter, for example,  var = 4.
+    - Functions begin with lowercase.
+    - Classes begins with a capital letter.
+
+    

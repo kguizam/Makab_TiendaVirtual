@@ -13,6 +13,8 @@ public class DataAcessObject {
 	private String tabla;
 	private String identificador = "CEDULA";
 	private String propiedades = "CORREO = ?, USUARIO = ?, CONTRASENIA = ?";
+	//private String valores = "(" + identificador + ", NOMBRE, CORREO, USUARIO, CONTRASENIA)";
+	private String valores = "(" + identificador + ", NOMBRE, ";
 	
 	public DataAcessObject(int modo) {
 		super();
@@ -20,111 +22,20 @@ public class DataAcessObject {
 		switch (modo) {
 			case 1:
 				tabla = "usuarios";
+				valores += "CORREO, USUARIO, CONTRASENIA)";
 				break;
 			case 2:
 				tabla = "clientes";
 				propiedades = "DIRECCION = ?, TELEFONO = ?, CORREO = ?";
+				valores += "DIRECCION, TELEFONO, CORREO)";
 				break;
 			case 3:
 				tabla = "proveedores";
 				propiedades = "DIRECCION = ?, TELEFONO = ?, CIUDAD = ?";
 				identificador = "NIT";
+				valores = "(" + identificador + ", NOMBRE, DIRECCION, TELEFONO, CIUDAD)";
 				break;
 		}
-	}
-
-	/**
-	 * Inserta los datos de un nuevo usuario
-	 * @param usuario Objeto Usuario con los datos a ingresar
-	 * @return ¿La operación ha sido o no exitosa?
-	 */
-	public boolean insertar(Usuario usuario) {
-		/*
-		 * Existen restricciones importantes a tomar en cuenta:
-		 * * Limitaciones de caracteres (Base de datos):
-		 * 	 - 9.999.999.999 Usuarios posibles
-		 * 	 - 10 char  -> Cédula
-		 * 	 - 64 char  -> Nombre
-		 * 	 - 64 char  -> Correo
-		 * 	 - 32 char  -> Usuario
-		 * 	 - 256 char -> Contraseña
-		 * * Datos que NO pueden repetirse:
-		 *   - Cédula
-		 *   - Usuario 		
-		 * * Cédula sólo puede ser un número
-		 */
-		Conexion conex = new Conexion();
-		boolean infoInsertadaCorrectamente = true;
-		
-		try {
-			PreparedStatement request = conex.getConnection().prepareStatement("INSERT INTO usuarios (CEDULA, NOMBRE, CORREO, USUARIO, CONTRASENIA) VALUES (?, ?, ?, ?, ?)");
-			request.setLong(1, usuario.getCedula());
-			request.setString(2, usuario.getNombre());
-			request.setString(3, usuario.getCorreo());
-			request.setString(4, usuario.getUsuario());
-			request.setString(5, usuario.getContrasena());
-			
-			request.executeUpdate();
-			
-	       	request.close();
-	        conex.desconectar();
-	        
-		} catch (Exception e) {
-			System.out.println("Error\n"+e);
-			infoInsertadaCorrectamente = false;
-	  	}
-		
-		return infoInsertadaCorrectamente;
-	}
-	
-	public boolean insertar(Cliente cliente) {
-		Conexion conex = new Conexion();
-		boolean infoInsertadaCorrectamente = true;
-		
-		try {
-			PreparedStatement request = conex.getConnection().prepareStatement("INSERT INTO clientes (CEDULA, NOMBRE, DIRECCION, TELEFONO, CORREO) VALUES (?, ?, ?, ?, ?)");
-			request.setLong(1, cliente.getCedula());
-			request.setString(2, cliente.getNombre());
-			request.setString(3, cliente.getCorreo());
-			request.setString(4, cliente.getUsuario());
-			request.setString(5, cliente.getContrasena());
-			
-			request.executeUpdate();
-			
-	       	request.close();
-	        conex.desconectar();
-	        
-		} catch (Exception e) {
-			System.out.println("Error\n"+e);
-			infoInsertadaCorrectamente = false;
-	  	}
-		
-		return infoInsertadaCorrectamente;
-	}
-	
-	public boolean insertar(Proveedor proveedor) {
-		Conexion conex = new Conexion();
-		boolean infoInsertadaCorrectamente = true;
-		
-		try {
-			PreparedStatement request = conex.getConnection().prepareStatement("INSERT INTO proveedores (NIT, NOMBRE, DIRECCION, TELEFONO, CIUDAD) VALUES (?, ?, ?, ?, ?)");
-			request.setLong(1, proveedor.getCedula());
-			request.setString(2, proveedor.getNombre());
-			request.setString(3, proveedor.getCorreo());
-			request.setString(4, proveedor.getUsuario());
-			request.setString(5, proveedor.getContrasena());
-			
-			request.executeUpdate();
-			
-	       	request.close();
-	        conex.desconectar();
-	        
-		} catch (Exception e) {
-			System.out.println("Error\n"+e);
-			infoInsertadaCorrectamente = false;
-	  	}
-		
-		return infoInsertadaCorrectamente;
 	}
 	
 	/**
@@ -154,6 +65,49 @@ public class DataAcessObject {
 			System.out.println("Error\n"+e);
 	  	}
 		return id;
+	}
+
+	/**
+	 * Inserta los datos de un nuevo usuario
+	 * @param usuario Objeto Usuario con los datos a ingresar
+	 * @return ¿La operación ha sido o no exitosa?
+	 */
+	public boolean insertar(Persona persona) {
+		/*
+		 * Existen restricciones importantes a tomar en cuenta:
+		 * * Limitaciones de caracteres (Base de datos):
+		 * 	 - 9.999.999.999 Usuarios posibles
+		 * 	 - 10 char  -> Cédula
+		 * 	 - 64 char  -> Nombre
+		 * 	 - 64 char  -> Correo
+		 * 	 - 32 char  -> Usuario
+		 * 	 - 256 char -> Contraseña
+		 * * Datos que NO pueden repetirse:
+		 *   - Cédula
+		 *   - Usuario 		
+		 * * Cédula sólo puede ser un número
+		 */
+		Conexion conex = new Conexion();
+		boolean infoInsertadaCorrectamente = true;
+		
+		try {
+			PreparedStatement request = conex.getConnection().prepareStatement("INSERT INTO " + tabla + " " + valores + " VALUES (?, ?, ?, ?, ?)");
+			request.setLong(1, persona.getIdentificador());
+			request.setString(2, persona.getNombre());
+			request.setString(3, persona.getCampo1());
+			request.setString(4, persona.getCampo2());
+			request.setString(5, persona.getCampo3());
+			
+			request.executeUpdate();
+			
+	       	request.close();
+	        conex.desconectar();
+	        
+		} catch (Exception e) {
+			System.out.println("Error\n"+e);
+			infoInsertadaCorrectamente = false;
+	  	}
+		return infoInsertadaCorrectamente;
 	}
 	
 	/**
@@ -232,12 +186,12 @@ public class DataAcessObject {
 				request.setInt(1, id);
 				
 				ResultSet rs = request.executeQuery(); rs.next();
-				usuario.setId(id);
-				usuario.setCedula(cedula);
+				usuario.setNumberID(id);
+				usuario.setIdentificador(cedula);
 				usuario.setNombre(rs.getString("NOMBRE"));
-				usuario.setCorreo(rs.getString("CORREO"));
-				usuario.setUsuario(rs.getString("USUARIO"));
-				usuario.setContrasena(rs.getString("CONTRASENIA"));
+				usuario.setCampo1(rs.getString("CORREO"));
+				usuario.setCampo2(rs.getString("USUARIO"));
+				usuario.setCampo3(rs.getString("CONTRASENIA"));
 				
 				rs.close();
 				request.close();
@@ -259,7 +213,7 @@ public class DataAcessObject {
 	 */
 	public Cliente consultarCliente(long cedula) {
 		Conexion conex = new Conexion();
-		int id = retornarId(cedula); //RETORNAR ID
+		int id = retornarId(cedula);
 		Cliente cliente = new Cliente();
 		
 		if (id != 0) {
@@ -268,12 +222,12 @@ public class DataAcessObject {
 				request.setInt(1, id);
 				
 				ResultSet rs = request.executeQuery(); rs.next();
-				cliente.setId(id);
-				cliente.setCedula(cedula);
+				cliente.setNumberID(id);
+				cliente.setIdentificador(cedula);
 				cliente.setNombre(rs.getString("NOMBRE"));
-				cliente.setCorreo(rs.getString("DIRECCION"));
-				cliente.setUsuario(rs.getString("TELEFONO"));
-				cliente.setContrasena(rs.getString("CORREO"));
+				cliente.setCampo1(rs.getString("DIRECCION"));
+				cliente.setCampo2(rs.getString("TELEFONO"));
+				cliente.setCampo3(rs.getString("CORREO"));
 				
 				rs.close();
 				request.close();
@@ -304,12 +258,12 @@ public class DataAcessObject {
 				request.setInt(1, id);
 				
 				ResultSet rs = request.executeQuery(); rs.next();
-				proveedor.setId(id);
-				proveedor.setCedula(cedula);
+				proveedor.setNumberID(id);
+				proveedor.setIdentificador(cedula);
 				proveedor.setNombre(rs.getString("NOMBRE"));
-				proveedor.setCorreo(rs.getString("DIRECCION"));
-				proveedor.setUsuario(rs.getString("TELEFONO"));
-				proveedor.setContrasena(rs.getString("CIUDAD"));
+				proveedor.setCampo1(rs.getString("DIRECCION"));
+				proveedor.setCampo2(rs.getString("TELEFONO"));
+				proveedor.setCampo3(rs.getString("CIUDAD"));
 				
 				rs.close();
 				request.close();
