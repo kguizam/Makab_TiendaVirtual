@@ -236,6 +236,11 @@ public class Peticion {
 		}
 		return message;
 	}
+	
+	public static Producto devolverProducto(int codigo) {
+		return DataAcessObject.obtenerProducto(codigo);
+	}
+	
 	/*
 	static ArrayList<Usuario> clientes
 	public static String[] retornar() {

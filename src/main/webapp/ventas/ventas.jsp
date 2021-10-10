@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="com.BO.Makab.*, com.DTO.Makab.Producto"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +29,30 @@
         </nav>
     </header>
     
+    <%
+    	// Programar comportamiento personalizado por botón
+    	String[] codigosProductos = {request.getParameter("numero-1"), request.getParameter("numero-2"), request.getParameter("numero-3")};
+    	Producto[] productos = {null, null, null};
+    	String[] nombresProductos = {"", "", ""};
+    	
+    	int i = 0;
+    	for (String codigo : codigosProductos) {
+    		if (codigo != "") {
+				productos[i] = Peticion.devolverProducto(Integer.parseInt(codigo));
+				if (productos[i] != null) nombresProductos[i] = productos[i].getNombre();
+    		}
+    		i++;
+    	}
+    %>
+    
     <main class="main-ucp">
         <div class="ucp">
 	        <form method="post" action="ventas.jsp">
 		        <section class="ventas__container">
-		        <!-- AQUÃ EMPIEZA LA ACCIÃ“N U,U -->
+		        <!-- AQUÍ EMPIEZA LA ACCIÓN U,U -->
 		            <h2>Ventas</h2>
 		            	<div class="ccc-container">
-		            <p>CÃ©dula</p>
+		            <p>Cédula</p>
 		            <input type="number" name="cedula">
 		            <button name="submit" value="consultar-cliente">Consultar</button>
 		            <p>Cliente</p>
@@ -49,23 +67,23 @@
 		                <p>Valor Total</p>
 		            </div>
 		            <div class="write-container">
-		                <input  type="number" name="numero-1">
-		                <button value="consultar-cliente" name="submit">Consultar</button>
-		                <input  type="text"	  name="producto-1">
+		                <input  type="number" name="numero-1" value="<%= request.getParameter("numero-1") %>">
+		                <button value="consultar-cliente1" name="submit">Consultar</button>
+		                <input  type="text"	  name="producto-1" value="<%= nombresProductos[0] %>">
 		                <input  type="number" name="cantidad-1" class="cantidad-int">
 		                <input  type="number" name="valor-1">
 		            </div>
 		            <div class="write-container">
-		                <input  type="number" name="numero-2">
-		                <button value="consultar-cliente" name="submit">Consultar</button>
-		                <input  type="text"	  name="producto-2">
+		                <input  type="number" name="numero-2" value="<%= request.getParameter("numero-2") %>">
+		                <button value="consultar-cliente2" name="submit">Consultar</button>
+		                <input  type="text"	  name="producto-2" value="<%= nombresProductos[1] %>">
 		                <input  type="number" name="cantidad-2" class="cantidad-int">
 		                <input  type="number" name="valor-2">
 		            </div>
 		            <div class="write-container">
-		                <input  type="number" name="numero-3">
-		                <button value="consultar-cliente" name="submit">Consultar</button>
-		                <input  type="text"	  name="producto-3">
+		                <input  type="number" name="numero-3" value="<%= request.getParameter("numero-3") %>">
+		                <button value="consultar-cliente3" name="submit">Consultar</button>
+		                <input  type="text"	  name="producto-3" value="<%= nombresProductos[2] %>">
 		                <input  type="number" name="cantidad-3" class="cantidad-int">
 		                <input  type="number" name="valor-3">
 		            </div>

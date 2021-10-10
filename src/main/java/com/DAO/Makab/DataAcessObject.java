@@ -1,6 +1,7 @@
 package com.DAO.Makab;
 import java.sql.*;
 import com.DTO.Makab.*;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -402,6 +403,32 @@ public class DataAcessObject {
 		return nitValidos;
  	}
 	
+	public static Producto obtenerProducto(int codigo) {
+		Conexion conex = new Conexion();
+		Producto producto = new Producto();
+		
+		try {
+			PreparedStatement request = conex.getConnection().prepareStatement("SELECT * FROM productos where CODIGO = ?");
+			request.setInt(1, codigo);
+			
+			ResultSet rs = request.executeQuery(); rs.next();
+			producto.setCodigo(codigo);
+			producto.setNombre(rs.getString("NOMBRE"));
+			producto.setNitProveedor(rs.getLong("NIT"));
+			producto.setPrecioCompra(rs.getDouble("PRECIO_COMPRA"));
+			producto.setIva(rs.getDouble("IVA_COMPRA"));
+			producto.setPrecioVenta(rs.getDouble("PRECIO_VENTA"));
+			
+			rs.close();
+			request.close();
+	        conex.desconectar();
+	        
+		} catch (Exception e) {
+			System.out.println("Error\n"+e);
+			producto = null;
+		}
+		return producto;
+	}
 	/* /**
 	 * Permite registrar un Cliente nuevo
 	 * @param persona

@@ -1,4 +1,5 @@
 package com.DTO.Makab;
+
 /**
  * Objeto para transpasar los datos entre métodos
  */
